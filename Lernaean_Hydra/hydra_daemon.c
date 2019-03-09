@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/09 09:37:06 by kmira             #+#    #+#             */
-/*   Updated: 2019/03/09 10:37:05 by kmira            ###   ########.fr       */
+/*   Updated: 2019/03/09 11:27:34 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ int		run_as_daemon(char *flags)
 ** (pid < 0) will exit the program because of error.
 ** (pid > 0) will exit the program because it is the parent.
 ** fork(2) will set the pid of the child to 0 if successful.
-** setsid(2) will make a new session without a terminal if and only if the pid is not a process group,
-** fork(2) ensures that the child pid has its own process ID that doesn't match any existing group.
+** setsid(2) will make a new session without a terminal
+** if and only if the pid is not a process group,
+** fork(2) ensures that the child pid has its own process ID
+** that doesn't match any existing group.
 */
 
 void	hydra_daemon_init(void)

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:40:39 by kmira             #+#    #+#             */
-/*   Updated: 2019/03/09 11:19:08 by kmira            ###   ########.fr       */
+/*   Updated: 2019/03/09 11:30:20 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		main(int aa, char **args)
 {
 	struct sockaddr_in	server;
 	struct sockaddr_in	client;
-	int	server_fd;
-	int	client_fd;
+	int					server_fd;
+	int					client_fd;
 
 	if (aa > 2)
 		printf("Invalid combination of options");
