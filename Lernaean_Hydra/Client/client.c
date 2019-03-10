@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hydra_secret.c                                     :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/08 18:45:37 by kmira             #+#    #+#             */
-/*   Updated: 2019/03/09 17:25:09 by kmira            ###   ########.fr       */
+/*   Created: 2019/03/09 12:57:11 by kmira             #+#    #+#             */
+/*   Updated: 2019/03/09 17:02:57 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hydra_server.h"
+#include "client.h"
 
-void	hydra_message(int client_fd)
+int main(void)
 {
-	dprintf(client_fd, "\033[1;5;36;40m[HYDRA]\033[0;37;40m: pong\n");
-	dprintf(client_fd, "\033[1;36;40m[HYDRA]\033[0;37;40m: pong!\n");
+	int socket_fd;
+	struct sockaddr_in server_address;
+
+	socket_fd = client_init();
+	client_connect(socket_fd, &server_address, ADDRESS);
+	client_session(socket_fd);
+	printf("Finished\n");
+	return (1);
 }

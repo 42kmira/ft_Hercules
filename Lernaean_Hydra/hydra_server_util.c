@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/09 11:32:11 by kmira             #+#    #+#             */
-/*   Updated: 2019/03/09 11:43:12 by kmira            ###   ########.fr       */
+/*   Updated: 2019/03/09 17:26:46 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int		hydra_accept(int server_fd, struct sockaddr_in *client)
 	else
 	{
 		dprintf(client_fd, \
-			"\033[5;36;40m[HYDRA]\033[0;37;40m: Server is ready to chat.\n");
-		printf("\033[5;36;40m[HYDRA]\033[0;37;40m:Server is ready to chat.\n");
+			"\033[1;36;40m[HYDRA]\033[0;37;40m: Server is ready to chat.\n");
+		printf("\033[1;36;40m[HYDRA]\033[0;37;40m:Server is ready to chat.\n");
 	}
 	return (client_fd);
 }
@@ -105,14 +105,17 @@ int		hydra_accept(int server_fd, struct sockaddr_in *client)
 
 void	hydra_handshake(int client_fd)
 {
-	char buffer[BUFF_SIZE + 1];
+	char	buffer[BUFF_SIZE + 1];
+	int		size;
 
-	while (1)
+	size = 0;
+	while (size >= 0)
 	{
 		bzero(buffer, BUFF_SIZE + 1);
-		read(client_fd, buffer, BUFF_SIZE);
-		printf("\033[5;36;40m[HYDRA]\033[0;37;40m:\033[0;92;40mSERVER BUFF");
+		size = read(client_fd, buffer, BUFF_SIZE);
+		printf("\033[1;36;40m[HYDRA]\033[0;37;40m:\033[0;92;40mSERVER BUFF");
 		printf("\033[0;37;40m %s", buffer);
+		dprintf(client_fd, "H");
 		if (strncmp(buffer, "ping", 4) == 0)
 			hydra_message(client_fd);
 		else if (strncmp(buffer, "exit", 4) == 0)
@@ -122,10 +125,7 @@ void	hydra_handshake(int client_fd)
 			printf("\033[1;31mConncetion is Terminated\033[0;37m\n");
 			exit(0);
 		}
-		else if (buffer[0] == '\0')
-		{
-			printf("\033[1;31mConncetion is Terminated\033[0;37m\n");
-			exit(0);
-		}
 	}
+	printf("\033[1;31mConncetion is Terminated\033[0;37m\n");
+	exit(0);
 }

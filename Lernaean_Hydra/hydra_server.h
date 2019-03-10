@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 13:44:17 by kmira             #+#    #+#             */
-/*   Updated: 2019/03/09 11:19:04 by kmira            ###   ########.fr       */
+/*   Updated: 2019/03/09 13:05:09 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 /*
 ** <unistd.h>		-> write(2), read(2), sleep(3), close(2), fork(2), setsid(2)
-** <sys/socket.h>	-> socket(2), listen(2), accept(2)
+** <sys/socket.h>	-> socket(2), listen(2), accept(2), bind(2)
 ** <stdlib.h>		-> exit(3)
-** <arpa/inet.h>	-> struct sockaddr_in, htons(3), htonl(3)
+** <arpa/inet.h>	-> struct sockaddr_in, htons(3), htonl(3), inet_addr(3)
 ** <string.h>		-> strncmp(3)
 ** <stdio.h>		-> printf(3), dprintf(3)
 */
